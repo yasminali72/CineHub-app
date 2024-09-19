@@ -5,15 +5,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoPlay from "../VideoPlay/VideoPlay";
 
-export default function BannerHome({bannerData,imageURL}) {
-  // const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
+export default function BannerHome() {
+  const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
   const [playVideo, setPlayVideo] = useState(false);
   const [id,setId]=useState()
   const [expoler,setExpoler]=useState()
 console.log(bannerData,'bannnnn');
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -25,14 +25,14 @@ console.log(bannerData,'bannnnn');
   return (
    <>
    
-   <section className="w-full h-full overflow-x-hidden">
+   <div className="w-full h-full overflow-x-hidden">
       <Slider {...settings}>
         {bannerData.map((data) => (
           
           <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
             <div className="w-full  min-h-[590px] sm:h-[700px] h-full bg-blue-600  ">
               <img
-                src={imageURL + `${data.backdrop_path}`}
+                src={imageURL + `${data.backdrop_path}`||`${data.poster_path}`}
                 alt={data.title || data.name }
                 className="w-full min-h-[590px] sm:h-[700px]  h-full object-cover "
               />
@@ -63,7 +63,7 @@ console.log(bannerData,'bannnnn');
            
         ))}
       </Slider>
-    </section>
+    </div>
     {playVideo && <VideoPlay id={id} expoler={expoler} setPlayVideo={setPlayVideo}/>
           }
   
