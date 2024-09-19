@@ -238,7 +238,7 @@ infinite:true
           </h1>
           <div className="">
             <Slider {...settings}>
-              {bannerData.map((data, index) => {
+              {bannerData?.map((data, index) => {
                 return (
                   <Card
                     key={data.id}

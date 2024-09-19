@@ -27,7 +27,7 @@ console.log(bannerData,'bannnnn');
    
    <section className="w-full h-full overflow-x-hidden">
       <Slider {...settings}>
-        {bannerData.map((data) => (
+        {bannerData?.map((data) => (
           
           <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
             <div className="w-full  min-h-[590px] sm:h-[700px] h-full bg-blue-600  ">
