@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userLogo from "/src/assets/user.png";
+import {logo} from '/src/assets/logo.png'
 export default function Navbar() {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
@@ -25,7 +26,7 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-[90%] gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 justify-center items-center">
           <div className="relative flex items-center justify-start">
             <Link to={""}>
-              <img src="/public//logo.png" alt="" width={120} />
+              <img src={logo} alt="" width={120} />
             </Link>
           </div>
           <ul
