@@ -25,7 +25,7 @@ console.log(bannerData,'bannnnn');
   return (
    <>
    
-   <section className="w-full h-full ">
+   <section className="w-full h-full overflow-x-hidden">
       <Slider {...settings}>
         {bannerData.map((data) => (
           
