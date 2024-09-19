@@ -26,7 +26,7 @@ console.log(bannerData,'bannnnn');
    <>
    
    <div className="w-full h-full overflow-x-hidden">
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         {bannerData.map((data) => (
           
           <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
@@ -62,7 +62,9 @@ console.log(bannerData,'bannnnn');
            
            
         ))}
-      </Slider>
+      </Slider> */}
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis optio dicta amet totam, illo modi sint illum nobis dolores ipsam deleniti accusamus odit? Ut quis asperiores impedit adipisci voluptatum.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur debitis officiis earum reprehenderit voluptas obcaecati. Fugit magnam vitae ipsam, at itaque praesentium rem, veritatis sequi corporis provident pariatur quis magni.</p>
     </div>
     {playVideo && <VideoPlay id={id} expoler={expoler} setPlayVideo={setPlayVideo}/>
           }
