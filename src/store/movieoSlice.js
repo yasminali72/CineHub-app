@@ -23,4 +23,4 @@ export const movieoSlice=createSlice({
 
 export const {setBannerData}=movieoSlice.actions  
 export const {setImageURL}=movieoSlice.actions  
-export  default movieoReducer= movieoSlice.reducer
+export  default  movieoSlice.reducer
