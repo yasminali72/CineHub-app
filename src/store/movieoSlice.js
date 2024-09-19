@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
+
+
 const initialState={
 bannerData:[],
 imageURL:''
@@ -21,4 +23,4 @@ export const movieoSlice=createSlice({
 
 export const {setBannerData}=movieoSlice.actions  
 export const {setImageURL}=movieoSlice.actions  
-export  const movieoReducer= movieoSlice.reducer
+export  default movieoReducer= movieoSlice.reducer
