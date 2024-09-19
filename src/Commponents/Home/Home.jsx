@@ -21,7 +21,38 @@ export default function Home() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [notFound, setNotFound] = useState(false);
 
- 
+  const getTeanding = async () => {
+    try {
+      let { data } = await axios.get(
+        "http://api.themoviedb.org/3/trending/all/week",
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGNjMjM4ZmE0MjIwMTliZjdlNmQyNzBiNjZmNjY1YyIsIm5iZiI6MTcyNjMzNTc1Mi42NTY3NTYsInN1YiI6IjY2ZTViYjM4ZWEyOTY5ODY0ZDc0YmZlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.44BHSGVL4cN29tW3ehGHeIzC48j6olcGIhhkMAgLDQI`,
+          },
+        }
+      );
+      dispatch(setBannerData(data.results));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCconfiguration = async () => {
+    try {
+      let { data } = await axios.get(
+        "https://api.themoviedb.org/3/configuration",
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGNjMjM4ZmE0MjIwMTliZjdlNmQyNzBiNjZmNjY1YyIsIm5iZiI6MTcyNjMzNTc1Mi42NTY3NTYsInN1YiI6IjY2ZTViYjM4ZWEyOTY5ODY0ZDc0YmZlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.44BHSGVL4cN29tW3ehGHeIzC48j6olcGIhhkMAgLDQI`,
+          },
+        }
+      );
+      console.log("dat", data);
+      dispatch(setImageURL(data.images.secure_base_url + "original"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getNowPlayingData = async () => {
     if (numOfPage === 1) {
@@ -149,7 +180,7 @@ export default function Home() {
     getUpComing();
     getOnAir()
     getTopRatedTv()
-  }, []);
+  }, [numOfPage]);
 
   var settings = {
     dots: false,
