@@ -2,11 +2,49 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userLogo from "/src/assets/user.png";
 import logo from '/src/assets/logo.png'
+import { useDispatch } from "react-redux";
 export default function Navbar() {
+  const dispatch=useDispatch()
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const [searhInput, SetSearhInput] = useState('');
+  const getTeanding = async () => {
+    try {
+      let { data } = await axios.get(
+        "http://api.themoviedb.org/3/trending/all/week",
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGNjMjM4ZmE0MjIwMTliZjdlNmQyNzBiNjZmNjY1YyIsIm5iZiI6MTcyNjMzNTc1Mi42NTY3NTYsInN1YiI6IjY2ZTViYjM4ZWEyOTY5ODY0ZDc0YmZlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.44BHSGVL4cN29tW3ehGHeIzC48j6olcGIhhkMAgLDQI`,
+          },
+        }
+      );
+      dispatch(setBannerData(data.results));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCconfiguration = async () => {
+    try {
+      let { data } = await axios.get(
+        "https://api.themoviedb.org/3/configuration",
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OGNjMjM4ZmE0MjIwMTliZjdlNmQyNzBiNjZmNjY1YyIsIm5iZiI6MTcyNjMzNTc1Mi42NTY3NTYsInN1YiI6IjY2ZTViYjM4ZWEyOTY5ODY0ZDc0YmZlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.44BHSGVL4cN29tW3ehGHeIzC48j6olcGIhhkMAgLDQI`,
+          },
+        }
+      );
+      console.log("dat", data);
+      dispatch(setImageURL(data.images.secure_base_url + "original"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
+getTeanding()
+getCconfiguration()
+
     if (searhInput) {
       navigate(`/search?p=${searhInput}`);
     }
