@@ -180,7 +180,7 @@ export default function Home() {
     getUpComing();
     getOnAir()
     getTopRatedTv()
-  }, [numOfPage]);
+  }, [dispatch]);
 
   var settings = {
     dots: false,
