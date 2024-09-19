@@ -11,6 +11,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const { bannerData, imageURL } = useSelector((state) => state.movieoData);
   const [bannar, setbannar] = useState([]);
+  const [imgURL, setImgURL] = useState();
   const [nowPlayingData, setNowPlayingData] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -51,6 +52,7 @@ export default function Home() {
       );
       console.log("dat", data);
       dispatch(setImageURL(data.images.secure_base_url + "original"));
+      setImgURL(data.images.secure_base_url + "original")
     } catch (error) {
       console.log(error);
     }
@@ -231,7 +233,7 @@ infinite:true
 
       <div>
         {/* banner */}
-        <BannerHome />
+        <BannerHome bannerData={bannar} imageURL={imgURL}/>
 
         {/* trending data */}
         <div className="container w-[85%] xl:w-full mx-auto my-10 ">
