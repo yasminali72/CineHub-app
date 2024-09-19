@@ -229,7 +229,9 @@ infinite:true
 
       <div>
         {/* banner */}
-        <BannerHome />
+       <div className="w-full h-[100vh]">
+       <BannerHome />
+       </div>
 
         {/* trending data */}
         <div className="container w-[85%] xl:w-full mx-auto my-10 ">
