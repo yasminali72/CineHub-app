@@ -5,11 +5,12 @@ import Layout from "./Commponents/Layout/Layout";
 import ExpolerPage from "./Commponents/ExpolerPage/ExpolerPage";
 import Search from "./Commponents/Search/Search";
 import Login from "./Commponents/Login/Login";
+import NotFound from "./Commponents/NotFound/NotFound";
 
 export const router=createBrowserRouter([
     {
       path:'',
-      element:<Layout></Layout>,
+      element:<Layout/>,
       children:[
         {index:true,
       element:<Home/>
@@ -30,6 +31,8 @@ export const router=createBrowserRouter([
       ,{
       path:'login',
       element:<Login/>
+    },{
+      path:'*',element:<NotFound/>
     }
    
 

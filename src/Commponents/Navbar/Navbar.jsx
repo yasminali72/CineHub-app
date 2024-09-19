@@ -7,7 +7,10 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   const [searhInput, SetSearhInput] = useState('');
   useEffect(() => {
-    navigate(`/search?p=${searhInput}`);
+    if (searhInput) {
+      navigate(`/search?p=${searhInput}`);
+    }
+    
   }, [searhInput]);
 
   function closeMenu() {
