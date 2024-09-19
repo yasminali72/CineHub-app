@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userLogo from "/src/assets/user.png";
-import {logo} from '/src/assets/logo.png'
+import logo from '/src/assets/logo.png'
 export default function Navbar() {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
