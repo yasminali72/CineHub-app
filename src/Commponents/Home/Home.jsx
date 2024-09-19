@@ -9,7 +9,8 @@ import Slider from "react-slick";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { bannerData, imageURL } = useSelector((state) => state.movieoData);
+  const [ bannerData, setBannerData ] = useState([]);
+  const [imageURL , setImageURL ] = useState();
   const [nowPlayingData, setNowPlayingData] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -31,7 +32,7 @@ export default function Home() {
           },
         }
       );
-      dispatch(setBannerData(data.results));
+      setBannerData(data.results);
     } catch (error) {
       console.log(error);
     }
@@ -229,7 +230,7 @@ infinite:true
 
       <div>
         {/* banner */}
-        <BannerHome />
+        <BannerHome bannerData={bannerData} imageURL={imageURL}/>
 
         {/* trending data */}
         <div className="container w-[85%] xl:w-full mx-auto my-10 ">
