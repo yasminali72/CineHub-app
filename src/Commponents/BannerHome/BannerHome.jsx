@@ -5,8 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoPlay from "../VideoPlay/VideoPlay";
 
-export default function BannerHome() {
-  const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
+export default function BannerHome({bannerData,imageURL}) {
+  // const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
   const [playVideo, setPlayVideo] = useState(false);
   const [id,setId]=useState()
   const [expoler,setExpoler]=useState()
