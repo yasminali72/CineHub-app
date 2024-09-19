@@ -10,8 +10,6 @@ import Slider from "react-slick";
 export default function Home() {
   const dispatch = useDispatch();
   const { bannerData, imageURL } = useSelector((state) => state.movieoData);
-  const [bannar, setbannar] = useState([]);
-  const [imgURL, setImgURL] = useState();
   const [nowPlayingData, setNowPlayingData] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -34,7 +32,6 @@ export default function Home() {
         }
       );
       dispatch(setBannerData(data.results));
-      setbannar(data.results)
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +49,6 @@ export default function Home() {
       );
       console.log("dat", data);
       dispatch(setImageURL(data.images.secure_base_url + "original"));
-      setImgURL(data.images.secure_base_url + "original")
     } catch (error) {
       console.log(error);
     }
@@ -233,7 +229,7 @@ infinite:true
 
       <div>
         {/* banner */}
-        <BannerHome bannerData={bannar} imageURL={imgURL}/>
+        <BannerHome />
 
         {/* trending data */}
         <div className="container w-[85%] xl:w-full mx-auto my-10 ">
@@ -242,7 +238,7 @@ infinite:true
           </h1>
           <div className="">
             <Slider {...settings}>
-              {bannar?.map((data, index) => {
+              {bannerData.map((data, index) => {
                 return (
                   <Card
                     key={data.id}

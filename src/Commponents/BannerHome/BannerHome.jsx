@@ -5,12 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoPlay from "../VideoPlay/VideoPlay";
 
-export default function BannerHome({bannerData,imageURL}) {
-  // const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
+export default function BannerHome() {
+  const { bannerData ,imageURL} = useSelector((state) => state.movieoData);
   const [playVideo, setPlayVideo] = useState(false);
   const [id,setId]=useState()
   const [expoler,setExpoler]=useState()
-console.log(imageURL,'bannnnn');
+console.log(bannerData,'bannnnn');
   var settings = {
     dots: false,
     infinite: true,
@@ -27,7 +27,7 @@ console.log(imageURL,'bannnnn');
    
    <section className="w-full h-full overflow-x-hidden">
       <Slider {...settings}>
-        {bannerData?.map((data) => (
+        {bannerData.map((data) => (
           
           <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
             <div className="w-full  min-h-[590px] sm:h-[700px] h-full bg-blue-600  ">
