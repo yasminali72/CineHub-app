@@ -276,7 +276,7 @@ export default function Details() {
           </div>
         </div>}
 
-        {recommendations.length>=1&&  <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        {recommendations.length>=1&&  <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
           Recommendations {expoler}
           </h1>

@@ -51,7 +51,7 @@ window.scrollTo({top:0,behavior:'smooth'})
     <Helmet>
       <title>Expoler</title>
     </Helmet>
-    <div className='container mt-20 mx-auto pt-10'>
+    <div className='container w-[85%] mt-20 mx-auto pt-10'>
     <div className="lg:hidden sticky top-20 mb-5 z-10 flex justify-center items-center mt-5 ">
         <input
           type="text"
