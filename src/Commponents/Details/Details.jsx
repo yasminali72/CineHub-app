@@ -13,6 +13,8 @@ export default function Details() {
   const { imageURL } = useSelector((state) => state.movieoData);
 
   const { id, expoler } = useParams();
+  const [heartColor, setHeartColor] = useState(false);
+
   const [details, setDetails] = useState({});
   const [cast, setCast] = useState([]);
   const [crew, setCrew] = useState([]);
@@ -21,11 +23,6 @@ export default function Details() {
   const [Similar, setSimilar] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
   const [playVideo, setPlayVideo] = useState(false);
-  
-
-
-
-
 
   let minutes = details?.runtime;
   let hours = Math.floor(minutes / 60); // Get the whole number of hours
@@ -47,10 +44,9 @@ export default function Details() {
     }
   };
 
-
   const getCredits = async () => {
     try {
-      let {data} = await axios.get(
+      let { data } = await axios.get(
         `https://api.themoviedb.org/3/${expoler}/${id}/credits
         `,
         {
@@ -60,23 +56,18 @@ export default function Details() {
         }
       );
       console.log(data, "credits");
-      setCast(data.cast)
-      setCrew(data.crew)
-      setWriters(data.crew.filter((ele)=>ele.job==='Writer'))
-      setDirector(data.crew.filter((ele)=>ele.job==='Director'))
-
-      
-
-     
+      setCast(data.cast);
+      setCrew(data.crew);
+      setWriters(data.crew.filter((ele) => ele.job === "Writer"));
+      setDirector(data.crew.filter((ele) => ele.job === "Director"));
     } catch (error) {
       console.log(error);
-      
     }
   };
 
   const getSimilar = async () => {
     try {
-      let {data} = await axios.get(
+      let { data } = await axios.get(
         `https://api.themoviedb.org/3/${expoler}/${id}/similar
 
         `,
@@ -87,20 +78,15 @@ export default function Details() {
         }
       );
       console.log(data, "similar");
-   setSimilar(data.results)
-
-      
-
-     
+      setSimilar(data.results);
     } catch (error) {
       console.log(error);
-      
     }
   };
 
-  const getRecommendations  = async () => {
+  const getRecommendations = async () => {
     try {
-      let {data} = await axios.get(
+      let { data } = await axios.get(
         `https://api.themoviedb.org/3/${expoler}/${id}/recommendations
         `,
         {
@@ -110,26 +96,20 @@ export default function Details() {
         }
       );
       console.log(data, "recoooooooooooooooooooooooooooooooooooooooo");
-   setRecommendations(data.results)
-
-      
-
-     
+      setRecommendations(data.results);
     } catch (error) {
       console.log(error);
-      
     }
   };
 
   // https://api.themoviedb.org/3/tv/{series_id}/videos
 
-  
   useEffect(() => {
     getDetails();
-    getCredits()
-    getSimilar()
-    getRecommendations()
-    window.scrollTo({top:0,behavior:'smooth'})
+    getCredits();
+    getSimilar();
+    getRecommendations();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
   console.log(details);
 
@@ -138,9 +118,8 @@ export default function Details() {
     infinite: false,
     speed: 500,
     slidesToShow: 5,
-   
+
     slidesToScroll: 5,
-    
 
     responsive: [
       {
@@ -197,19 +176,31 @@ export default function Details() {
           <img
             src={imageURL + `${details.poster_path}`}
             alt=""
-            className="w-60 lg:w-[500px] h-80 object-cover rounded"
+            className="w-60 lg:w-[500px] h-80 object-cover  rounded"
           />
-          <button onClick={()=>{setPlayVideo(true)
-          }} className="  py-2 px-4 rounded font-bold my-2 shadow-md bg-gradient-to-l from-red-500 to-orange-500 text-white hover:scale-105 transition-all">
-                  Play Now
-                </button>
+          <button
+            onClick={() => {
+              setPlayVideo(true);
+            }}
+            className="w-full  py-2 px-4 rounded font-bold my-2 shadow-md bg-gradient-to-l from-red-500 to-orange-500 text-white hover:scale-105 transition-all"
+          >
+            Play Now
+          </button>
         </div>
         <div className="">
-          <h1 className="text-2xl font-bold text-white mt-2">
-            {details.title || details.name}
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-white mt-2">
+              {details.title || details.name}
+            </h1>
+            <i
+              class={`fa-solid fa-heart text-2xl cursor-pointer  ${
+                heartColor ? "text-orange-500" : ""
+              }`}
+              onClick={() => setHeartColor(!heartColor)}
+            ></i>
+          </div>
           <p className="text-neutral-400">{details.tagline}</p>
-          <Divider/>
+          <Divider />
           <div className="flex items-center gap-4 mt-1">
             <p>Rating: {Number(details.vote_average).toFixed(1)}</p>
             <strong>| </strong>
@@ -221,78 +212,109 @@ export default function Details() {
               </p>
             )}
           </div>
-          <Divider/>
+          <Divider />
           <div className="mt-2 mb-2">
             <h3 className="font-bold text-white mb-1">
               Overview:
               <p className="font-normal text-neutral-400">{details.overview}</p>
             </h3>
           </div>
-          <Divider/>
+          <Divider />
           <div className="flex gap-4 items-center text-center">
-            <p><strong>Status</strong> : {details.status}</p>
+            <p>
+              <strong>Status</strong> : {details.status}
+            </p>
             <strong>|</strong>
             <p>
-              <strong>Release Date</strong> :  {moment(details.release_date).format('MMMM Do YYYY')}
+              <strong>Release Date</strong> :{" "}
+              {moment(details.release_date).format("MMMM Do YYYY")}
             </p>
             <strong>|</strong>
             <p>
               <strong>Revenue</strong> : {details.revenue}
             </p>
-           
           </div>
-          <Divider/>
+          <Divider />
           <div>
-            <p><strong>Director</strong>: {director[0]?.name}</p>
-            <Divider/>
-            <p><strong>Writer</strong>: {writers[0]?.name}</p>
+            <p>
+              <strong>Director</strong>: {director[0]?.name}
+            </p>
+            <Divider />
+            <p>
+              <strong>Writer</strong>: {writers[0]?.name}
+            </p>
           </div>
 
-          <Divider/>
-      <div className="container mx-auto">
-        <h1 className="font-bold text-2xl my-2">Star Cast:</h1>
-<div className="grid grid-cols-[repeat(auto-fit,96px)] gap-4 ">
-  {cast.filter((star)=>star.profile_path).map((star)=><div className="">
-    <img src={imageURL+star.profile_path} alt="" className="w-24  h-24 object-cover rounded-full " />
-    <p className="text-center font-bold text-sm text-neutral-400">{star.name}</p>
-  </div>)}
-</div>
-      </div>
+          <Divider />
+          <div className="container mx-auto">
+            <h1 className="font-bold text-2xl my-2">Star Cast:</h1>
+            <div className="grid grid-cols-[repeat(auto-fit,96px)] gap-4 ">
+              {cast
+                .filter((star) => star.profile_path)
+                .map((star) => (
+                  <div className="">
+                    <img
+                      src={imageURL + star.profile_path}
+                      alt=""
+                      className="w-24  h-24 object-cover rounded-full "
+                    />
+                    <p className="text-center font-bold text-sm text-neutral-400">
+                      {star.name}
+                    </p>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
-
-      
       </div>
 
-    { Similar.length>=1 && <div className="container w-[85%]  mx-auto my-10 ">
+      {Similar.length >= 1 && (
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
             similar {expoler}
           </h1>
           <div className="">
             <Slider {...settings}>
               {Similar.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={expoler}/>;
+                return (
+                  <Card
+                    key={data.id}
+                    data={data}
+                    trending={false}
+                    expoler={expoler}
+                  />
+                );
               })}
             </Slider>
           </div>
-        </div>}
+        </div>
+      )}
 
-        {recommendations.length>=1&&  <div className="container w-[85%]  mx-auto my-10 ">
+      {recommendations.length >= 1 && (
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
-          Recommendations {expoler}
+            Recommendations {expoler}
           </h1>
           <div className="">
             <Slider {...settings}>
               {recommendations.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={expoler}/>;
+                return (
+                  <Card
+                    key={data.id}
+                    data={data}
+                    trending={false}
+                    expoler={expoler}
+                  />
+                );
               })}
             </Slider>
           </div>
-        </div>}
+        </div>
+      )}
 
-
-{playVideo && <VideoPlay id={id} expoler={expoler} setPlayVideo={setPlayVideo}/>
-}
-
-  </div>
+      {playVideo && (
+        <VideoPlay id={id} expoler={expoler} setPlayVideo={setPlayVideo} />
+      )}
+    </div>
   );
 }

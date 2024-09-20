@@ -61,7 +61,7 @@ window.scrollTo({top:0,behavior:'smooth'})
         />
       </div>
 <h1 className='capitalize ms-4 font-bold text-2xl mb-4'>popular {expoler}</h1>
-<div className='grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-4'>{data?.map((data, index) => {
+<div className='grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-auto gap-y-6'>{data?.map((data, index) => {
                 return <Card data={data} key={data.id} trending={false} expoler={expoler}/>
               })}</div>           
               
