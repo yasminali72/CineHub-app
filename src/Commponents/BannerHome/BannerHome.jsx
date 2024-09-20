@@ -13,7 +13,7 @@ export default function BannerHome() {
 console.log(bannerData,'bannnnn');
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -25,14 +25,14 @@ console.log(bannerData,'bannnnn');
   return (
    <>
    
-   <div className="w-full h-full overflow-x-hidden">
-      {/* <Slider {...settings}>
+   <section className="w-full h-full overflow-x-hidden">
+      <Slider {...settings}>
         {bannerData.map((data) => (
           
           <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
             <div className="w-full  min-h-[590px] sm:h-[700px] h-full bg-blue-600  ">
               <img
-                src={imageURL + `${data.backdrop_path}`||`${data.poster_path}`}
+                src={imageURL + `${data.backdrop_path}`}
                 alt={data.title || data.name }
                 className="w-full min-h-[590px] sm:h-[700px]  h-full object-cover "
               />
@@ -62,10 +62,8 @@ console.log(bannerData,'bannnnn');
            
            
         ))}
-      </Slider> */}
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis optio dicta amet totam, illo modi sint illum nobis dolores ipsam deleniti accusamus odit? Ut quis asperiores impedit adipisci voluptatum.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur debitis officiis earum reprehenderit voluptas obcaecati. Fugit magnam vitae ipsam, at itaque praesentium rem, veritatis sequi corporis provident pariatur quis magni.</p>
-    </div>
+      </Slider>
+    </section>
     {playVideo && <VideoPlay id={id} expoler={expoler} setPlayVideo={setPlayVideo}/>
           }
   

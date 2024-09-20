@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import moment from 'moment'
 import { useNavigate } from "react-router-dom";
-export default function Card({ data ,index,trending,expoler}) {
-const {imageURL}=useSelector((state)=>state.movieoData)
+export default function Card({ data ,index,trending,expoler,imageURL}) {
+// const {imageURL}=useSelector((state)=>state.movieoData)
 const navigate=useNavigate()
   return (
     <>
