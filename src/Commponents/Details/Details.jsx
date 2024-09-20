@@ -192,7 +192,7 @@ export default function Details() {
         <div className="absolute w-full h-full inset-0 bg-gradient-to-t from-neutral-900/90 to-transparent"></div>
       </div>
 
-      <div className="container mx-auto py-20 px-3  lg:py-0 flex  flex-col lg:flex-row  gap-3 lg:gap-10">
+      <div className="container w-[85%] mx-auto py-20 px-3  lg:py-0 flex  flex-col lg:flex-row  gap-3 lg:gap-10">
         <div className="lg:-mt-28 relative w-fit  mx-auto lg:ml-0 lg:mx-0 ">
           <img
             src={imageURL + `${details.poster_path}`}
@@ -263,7 +263,7 @@ export default function Details() {
       
       </div>
 
-    { Similar.length>=1 && <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+    { Similar.length>=1 && <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
             similar {expoler}
           </h1>
