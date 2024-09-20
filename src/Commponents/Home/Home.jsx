@@ -232,7 +232,7 @@ infinite:true
         <BannerHome />
 
         {/* trending data */}
-        <div className="container w-[80%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3">
             Trending Show
           </h1>
@@ -255,7 +255,7 @@ infinite:true
 
         {/* Now playing */}
 
-        <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3">
             Now Playing
           </h1>
@@ -309,7 +309,7 @@ infinite:true
         </div>
 
         {/* top rated data */}
-        <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3">
             Top Rated Movies
           </h1>
@@ -323,7 +323,7 @@ infinite:true
         </div>
 
         {/* Upcoming data */}
-        <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3">
             Up Coming
           </h1>
@@ -336,7 +336,7 @@ infinite:true
           </div>
         </div>
         {/* top popular data */}
-        <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
             Popular movies
           </h1>
@@ -349,7 +349,7 @@ infinite:true
           </div>
         </div>
 {/* on the top tv */}
-<div className="container w-[85%] xl:w-full mx-auto my-10 ">
+<div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
             popular tv 
           </h1>
@@ -362,7 +362,7 @@ infinite:true
           </div>
         </div>
 {/* on the air data */}
-<div className="container w-[85%] xl:w-full mx-auto my-10 ">
+<div className="container w-[85%]  mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3 capitalize">
             On the air
           </h1>
