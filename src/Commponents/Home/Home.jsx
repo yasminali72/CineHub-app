@@ -232,7 +232,7 @@ infinite:true
         <BannerHome />
 
         {/* trending data */}
-        <div className="container w-[85%] xl:w-full mx-auto my-10 ">
+        <div className="container w-[80%] xl:w-full mx-auto my-10 ">
           <h1 className=" font-bold  text-2xl mb-5 text-white  ps-3">
             Trending Show
           </h1>

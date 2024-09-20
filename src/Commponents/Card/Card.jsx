@@ -7,7 +7,7 @@ const {imageURL}=useSelector((state)=>state.movieoData)
 const navigate=useNavigate()
   return (
     <>
-        <div className="w-[80%] h-80  rounded  relative mx-auto cursor-pointer hover:scale-105 transition-all " onClick={()=>navigate('/'+expoler+'/'+data.id)}>
+        <div className="w-[90%] h-80  rounded  relative mx-auto cursor-pointer hover:scale-105 transition-all " onClick={()=>navigate('/'+expoler+'/'+data.id)}>
          {(data.backdrop_path && data.poster_path) ? <img
             className="w-full h-full object-cover rounded"
             src={imageURL + `${data.backdrop_path}` ||`${data.poster_path}`}
