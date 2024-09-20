@@ -2,17 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
-import { setBannerData } from "../../store/movieoSlice";
+import { setBannerData, setImageURL } from "../../store/movieoSlice";
+import BannerHome from "../BannerHome/BannerHome";
 import Card from "../Card/Card";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 export default function Home() {
   const dispatch = useDispatch();
-
-  const  [bannerData,setBannarData]=useState([])
-  const  [imageURL,setImageURL]=useState()
-
+  const { bannerData, imageURL } = useSelector((state) => state.movieoData);
   const [nowPlayingData, setNowPlayingData] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -35,7 +32,6 @@ export default function Home() {
         }
       );
       dispatch(setBannerData(data.results));
-      setBannarData(data.results)
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +49,6 @@ export default function Home() {
       );
       console.log("dat", data);
       dispatch(setImageURL(data.images.secure_base_url + "original"));
-      setImageURL(data.images.secure_base_url + "original")
     } catch (error) {
       console.log(error);
     }
@@ -226,16 +221,6 @@ infinite:true
       },
     ],
   };
-  var settingsBannar = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    
-  };
   return (
     <>
       <Helmet>
@@ -244,50 +229,7 @@ infinite:true
 
       <div>
         {/* banner */}
-        {/* <BannerHome bannerData={bannerData}/> */}
-
-          
-   <div className="w-full h-[99vh] overflow-x-hidden bg-red-400">
-     
-      <Slider {...settingsBannar}>
-        {bannerData.map((data) => (
-          
-          <div className="min-w-full min-h-[590px]  sm:h-[700px] lg:h-[99vh]  relative bg-green-400" key={data.id}>
-            <div className="w-full  min-h-[590px] sm:h-[700px] h-full bg-blue-600  ">
-              <img
-                src={imageURL + `${data.backdrop_path}`}
-                alt={data.title || data.name }
-                className="w-full min-h-[590px] sm:h-[700px]  h-full object-cover "
-              />
-            </div>
-            <div className="absolute top-0 w-full h-full bg-gradient-to-t from-neutral-900 to-transparent "></div>
-            <div className="container max-w-xl absolute bottom-0 mx-1 md:mx-10">
-              <div className="px-2 w-full">
-                <h1 className="font-semibold text-xl md:text-3xl lg:text-4xl text-white drop-shadow-md">
-                  {data.title || data.name}
-                </h1>
-                <p className="my-2 text-ellipsis line-clamp-4">
-                  {data.overview}
-                </p>
-                <div className="flex items-center gap-2">
-                  <p>Rating: {Number(data.vote_average).toFixed(1)}+</p>
-                  <span>|</span>
-                  <p>View: {Number(data.popularity).toFixed(0)}</p>
-                </div>
-                <button onClick={()=>{setPlayVideo(true)
-      setId(data.id) ; setExpoler(data.media_type)   }} className="bg-white text-orange-500 py-2 px-4 rounded font-bold my-2 shadow-md hover:bg-gradient-to-l from-red-500 to-orange-500 hover:text-white hover:scale-105 transition-all">
-                  Play Now
-                </button>
-              </div>
-            </div>
-           
-          </div>
-           
-           
-        ))}
-      </Slider>
-      
-    </div>
+        <BannerHome />
 
         {/* trending data */}
         <div className="container w-[85%] xl:w-full mx-auto my-10 ">
@@ -304,7 +246,6 @@ infinite:true
                     index={index + 1}
                     trending={true}
                     expoler={data.media_type}
-                    imageURL={imageURL}
                   />
                 );
               })}
@@ -322,7 +263,7 @@ infinite:true
           <div>
             <Slider {...settings}>
               {nowPlayingData.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'movie'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'movie'}/>;
               })}
             </Slider>
             {/* for all pages */}
@@ -375,7 +316,7 @@ infinite:true
           <div className="">
             <Slider {...settings}>
               {topRated.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'movie'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'movie'}/>;
               })}
             </Slider>
           </div>
@@ -389,7 +330,7 @@ infinite:true
           <div className="">
             <Slider {...settings}>
               {upComing.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'movie'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'movie'}/>;
               })}
             </Slider>
           </div>
@@ -402,7 +343,7 @@ infinite:true
           <div className="">
             <Slider {...settings}>
               {popular.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'movie'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'movie'} />;
               })}
             </Slider>
           </div>
@@ -415,7 +356,7 @@ infinite:true
           <div className="">
             <Slider {...settings}>
               {topRatedTv.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'tv'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'tv'}/>;
               })}
             </Slider>
           </div>
@@ -428,7 +369,7 @@ infinite:true
           <div className="">
             <Slider {...settings}>
               {onAir.map((data, index) => {
-                return <Card key={data.id} data={data} trending={false} expoler={'tv'} imageURL={imageURL}/>;
+                return <Card key={data.id} data={data} trending={false} expoler={'tv'}/>;
               })}
             </Slider>
           </div>
