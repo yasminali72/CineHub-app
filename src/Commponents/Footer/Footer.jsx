@@ -3,13 +3,13 @@ import React from 'react'
 export default function Footer() {
   return (
    <>
-   <div className="text-center bg-gray-400 py-6 ">
+   <div className="text-center bg-gray-500 py-6 ">
     <a href="#" className="flex items-center justify-center mb-5 text-2xl font-bold text-orange-500 ">
     <i class="fa-solid fa-clapperboard me-2"></i>
-		Movieo
+    CineHub
     </a>
 
-    <span className="block text-sm text-center text-black">© 2024 Movieo.
+    <span className="block text-sm text-center text-black">© 2024 CineHub.
         <h4 className='capitalize'>Created by dynamic coding with Yasmin </h4>
 	</span>
 

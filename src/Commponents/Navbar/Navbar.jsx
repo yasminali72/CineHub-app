@@ -28,8 +28,8 @@ export default function Navbar() {
       <header className="fixed w-full h-20 top-0 left-0 right-0 z-50     shadow-md bg-gray-600 bg-opacity-50">
         <nav className="mx-auto flex max-w-[90%] gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 justify-center items-center">
           <div className="relative flex items-center justify-start">
-            <Link to={""}>
-              <img src={logo} alt="" width={120} />
+            <Link to={""} className="font-bold text-2xl md:text-4xl text-orange-500">
+            CineHub
             </Link>
           </div>
           <ul

@@ -47,9 +47,9 @@ console.log(bannerData,'bannnnn');
                   {data.overview}
                 </p>
                 <div className="flex items-center gap-2">
-                  <p>Rating: {Number(data.vote_average).toFixed(1)}+</p>
+                  <p>Rating: {Number(data.vote_average).toFixed(1)}+ <i class="fa-solid fa-star text-orange-500"></i></p>
                   <span>|</span>
-                  <p>View: {Number(data.popularity).toFixed(0)}</p>
+                  <p>View: {Number(data.popularity).toFixed(0)}<i class="fa-solid fa-eye ms-1 text-orange-500"></i></p>
                 </div>
                 <button onClick={()=>{setPlayVideo(true)
       setId(data.id) ; setExpoler(data.media_type)   }} className="bg-white text-orange-500 py-2 px-4 rounded font-bold my-2 shadow-md hover:bg-gradient-to-l from-red-500 to-orange-500 hover:text-white hover:scale-105 transition-all">

@@ -30,11 +30,11 @@ export default function VideoPlay({id,expoler,setPlayVideo}) {
         getVideo()
     },[])
   return (
-    <section className='fixed bg-neutral-500 bg-opacity-50 inset-0 z-20' onClick={()=>setPlayVideo(false)}>
+    <section className='fixed bg-neutral-500 bg-opacity-50 inset-0 z-20' >
         <div className='absolute top-20 end-0 lg:end-20 '>
         <i class="fa-solid fa-xmark text-3xl cursor-pointer" onClick={()=>setPlayVideo(false)}></i>
         </div>
-<div className='w-full max-w-screen-lg lg:h-[80vh] bg-black mt-28 mx-auto aspect-video rounded' onClick={(e)=>e.stopPropagation()}>
+<div className='w-full max-w-screen-lg lg:h-[80vh] bg-black mt-28 mx-auto aspect-video rounded' >
 <iframe src={`https://www.youtube.com/embed/${playVideoData[0]?.key}`} className='w-full h-full' ></iframe>
 </div>
         </section>

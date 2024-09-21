@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Card from "../Card/Card";
 import { data } from "autoprefixer";
 import { useSelector } from "react-redux";
@@ -178,14 +178,20 @@ export default function Details() {
             alt=""
             className="w-60 lg:w-[500px] h-80 object-cover  rounded"
           />
-          <button
+        <div className="flex gap-1">
+        <button
             onClick={() => {
               setPlayVideo(true);
             }}
-            className="w-full  py-2 px-4 rounded font-bold my-2 shadow-md bg-gradient-to-l from-red-500 to-orange-500 text-white hover:scale-105 transition-all"
+            className="w-1/2  py-2 px-4 rounded font-bold capitalize my-2 shadow-md bg-gradient-to-l from-red-500 to-orange-500 text-white  "
           >
-            Play Now
+            
+            play tailer
           </button>
+{     details.imdb_id &&     <Link to={`https:www.imdb.com/title/`+details.imdb_id} target="_blank" className="w-1/2 my-2 py-2 text-center text-white   rounded font-bold  bg-yellow-500 ">IMDB</Link>
+}  
+          </div>        
+
         </div>
         <div className="">
           <div className="flex justify-between items-center">
@@ -202,9 +208,9 @@ export default function Details() {
           <p className="text-neutral-400">{details.tagline}</p>
           <Divider />
           <div className="flex items-center gap-4 mt-1">
-            <p>Rating: {Number(details.vote_average).toFixed(1)}</p>
+            <p>Rating: {Number(details.vote_average).toFixed(1)} <i class="fa-solid fa-star ms-1 text-orange-500"></i></p>
             <strong>| </strong>
-            <p>View: {Number(details.vote_count)}</p>
+            <p>View: {Number(details.vote_count)} <i class="fa-solid fa-eye ms-1 text-orange-500"></i></p>
             <strong>| </strong>
             {details.runtime && (
               <p>
