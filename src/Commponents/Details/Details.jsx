@@ -186,7 +186,7 @@ export default function Details() {
             className="w-1/2  py-2 px-4 rounded font-bold capitalize my-2 shadow-md bg-gradient-to-l from-red-500 to-orange-500 text-white  "
           >
             
-            play tailer
+            play now
           </button>
 {     details.imdb_id &&     <Link to={`https:www.imdb.com/title/`+details.imdb_id} target="_blank" className="w-1/2 my-2 py-2 text-center text-white   rounded font-bold  bg-yellow-500 ">IMDB</Link>
 }  
